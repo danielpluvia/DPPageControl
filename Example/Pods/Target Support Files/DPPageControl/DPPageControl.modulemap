@@ -1,0 +1,6 @@
+framework module DPPageControl {
+  umbrella header "DPPageControl-umbrella.h"
+
+  export *
+  module * { export * }
+}

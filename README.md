@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/DPPageControl.svg?style=flat)](https://cocoapods.org/pods/DPPageControl)
 [![Platform](https://img.shields.io/cocoapods/p/DPPageControl.svg?style=flat)](https://cocoapods.org/pods/DPPageControl)
 
+This project is inspired [CHIPageControl](https://github.com/ChiliLabs/CHIPageControl) and [recreating-instagrams-page-control](https://medium.com/@Pelaez/recreating-instagrams-page-control-ebc2103b8a39).
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.

@@ -1,0 +1,16 @@
+PODS:
+  - DPPageControl (0.1.0)
+
+DEPENDENCIES:
+  - DPPageControl (from `../`)
+
+EXTERNAL SOURCES:
+  DPPageControl:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DPPageControl: a96722ef8b8172af287f5a81fbfca4f151ea20bf
+
+PODFILE CHECKSUM: 78c773351caf798f42246548afb28816be20e7bd
+
+COCOAPODS: 1.5.3
