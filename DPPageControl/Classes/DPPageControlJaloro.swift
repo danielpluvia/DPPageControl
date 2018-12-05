@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DPPageControlJaloro: DPBasePageControl {
+open class DPPageControlJaloro: DPBasePageControl {
     
     // MARK: - Properties
     
@@ -33,7 +33,7 @@ class DPPageControlJaloro: DPBasePageControl {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         guard isNeedLayoutSubviews() else { return }
         resetFrames()
@@ -75,18 +75,22 @@ class DPPageControlJaloro: DPBasePageControl {
         }
     }
     
-    override func update(for progress: Double) {
-        // let calculateProgress = progress * Double(numberOfPages - 1)
-        let total = intrinsicContentSize.width - indicatorSize.width
-        let horizontalOffset = (bounds.width - intrinsicContentSize.width) / 2
-        // active
-        let activeX = bounds.minX
-            + horizontalOffset
-            + CGFloat(progress) * total
-        
-        CATransaction.begin()
-        CATransaction.setDisableActions(true)   // Prevent animatable property from animating
-        active.frame.origin.x = activeX
-        CATransaction.commit()
+    override func update(for progress: Double, animated: Bool = false) {
+        if animated {
+            
+        } else {
+            // let calculateProgress = progress * Double(numberOfPages - 1)
+            let total = intrinsicContentSize.width - indicatorSize.width
+            let horizontalOffset = (bounds.width - intrinsicContentSize.width) / 2
+            // active
+            let activeX = bounds.minX
+                + horizontalOffset
+                + CGFloat(progress) * total
+            
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)   // Prevent animatable property from animating
+            active.frame.origin.x = activeX
+            CATransaction.commit()
+        }
     }
 }

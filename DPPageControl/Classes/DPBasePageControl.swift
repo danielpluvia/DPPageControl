@@ -23,8 +23,8 @@ open class DPBasePageControl: UIControl {
             return Int(round(progress * (Double(numberOfPages) - 1)))
         }
         set {
-            moveToProgress = Double(newValue / numberOfPages)
-            // todo
+            let moveToProgress = Double(newValue / numberOfPages)
+            update(for: moveToProgress, animated: true)
         }
     }
     open var indicatorColor: UIColor = .lightGray { didSet { updateColors() } }
@@ -57,12 +57,7 @@ open class DPBasePageControl: UIControl {
     }
     open var progress: Double = 0 {
         didSet {
-            update(for: progress)
-        }
-    }
-    internal var moveToProgress: Double? {          // The progress which is to be animated to
-        didSet {
-            
+            update(for: progress, animated: false)
         }
     }
     
@@ -83,24 +78,29 @@ open class DPBasePageControl: UIControl {
     
     // MARK: - Override Methods
     
-    func updatedNumberOfPages(_ count: Int) {
+    internal func updatedNumberOfPages(_ count: Int) {
         fatalError("Should be implemented in child class")
     }
     
-    func updateColors() {
+    internal func updateColors() {
         fatalError("Should be implemented in child class")
     }
     
-    func updatedRadius() {
+    internal func updatedRadius() {
         fatalError("Should be implemented in child class")
     }
     
-    func update(for progress: Double) {
+    /// update progress
+    ///
+    /// - Parameters:
+    ///   - progress: 0...1
+    ///   - animated: true for animation, false for immediate change.
+    internal func update(for progress: Double, animated: Bool = false) {
         fatalError("Should be implemented in child class")
         // let calculateProgress = progress * Double(numberOfPages - 1)
     }
     
-    func resetFrames() {
+    internal func resetFrames() {
         fatalError("Should be implemented in child class")
     }
     
