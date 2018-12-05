@@ -75,22 +75,18 @@ open class DPPageControlJaloro: DPBasePageControl {
         }
     }
     
-    override func update(for progress: Double, animated: Bool = false) {
-        if animated {
-            
-        } else {
-            // let calculateProgress = progress * Double(numberOfPages - 1)
-            let total = intrinsicContentSize.width - indicatorSize.width
-            let horizontalOffset = (bounds.width - intrinsicContentSize.width) / 2
-            // active
-            let activeX = bounds.minX
-                + horizontalOffset
-                + CGFloat(progress) * total
-            
-            CATransaction.begin()
-            CATransaction.setDisableActions(true)   // Prevent animatable property from animating
-            active.frame.origin.x = activeX
-            CATransaction.commit()
-        }
+    override func update(for progress: CGFloat) {
+        // let calculateProgress = progress * Double(numberOfPages - 1)
+        let total = intrinsicContentSize.width - indicatorSize.width
+        let horizontalOffset = (bounds.width - intrinsicContentSize.width) / 2
+        // active
+        let activeX = bounds.minX
+            + horizontalOffset
+            + CGFloat(progress) * total
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)   // Prevent animatable property from animating
+        active.frame.origin.x = activeX
+        CATransaction.commit()
     }
 }

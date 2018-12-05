@@ -75,26 +75,22 @@ open class DPPageControlAleppo: DPBasePageControl {
         }
     }
     
-    override func update(for progress: Double, animated: Bool = false) {
-        if animated {
-            
-        } else {
-            guard (0...1).contains(progress), numberOfPages > 1 else {return}
-            let total = intrinsicContentSize.width - indicatorSize.width
-            let horizontalOffset = (bounds.width - intrinsicContentSize.width) / 2
-            let startX = bounds.minX
-                + horizontalOffset
-                + CGFloat(progress) * total
-            let calculateProgress = progress * Double(numberOfPages - 1)
-            let distance = abs(round(calculateProgress) - calculateProgress)
-            let mult = 1 + distance * 2
-            
-            CATransaction.begin()
-            CATransaction.setDisableActions(true)   // Prevent animatable property from animating
-            active.frame.origin.x = startX
-            active.frame.size.width = indicatorSize.width * CGFloat(mult)
-            CATransaction.commit()
-        }
+    override func update(for progress: CGFloat) {
+        guard (0...1).contains(progress), numberOfPages > 1 else {return}
+        let total = intrinsicContentSize.width - indicatorSize.width
+        let horizontalOffset = (bounds.width - intrinsicContentSize.width) / 2
+        let startX = bounds.minX
+            + horizontalOffset
+            + CGFloat(progress) * total
+        let calculateProgress = progress * CGFloat(numberOfPages - 1)
+        let distance = abs(round(calculateProgress) - calculateProgress)
+        let mult = 1 + distance * 2
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)   // Prevent animatable property from animating
+        active.frame.origin.x = startX
+        active.frame.size.width = indicatorSize.width * CGFloat(mult)
+        CATransaction.commit()
     }
-
+    
 }

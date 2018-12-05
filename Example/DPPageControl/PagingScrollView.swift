@@ -13,13 +13,13 @@ class PagingScrollView: UIScrollView {
     var totalNumberOfPages: Int = 0 {
         didSet {
             var tempPages: [UIView] = []
-            (0..<totalNumberOfPages).forEach{ _ in 
+            (0..<totalNumberOfPages).forEach{ _ in
                 tempPages.append(UIView())
             }
             pages = tempPages
         }
     }
-    fileprivate var containerView: UIView = UIView()
+    var containerView: UIView = UIView()
     fileprivate var pages: [UIView] = [] {
         didSet {
             oldValue.forEach { oldPage in

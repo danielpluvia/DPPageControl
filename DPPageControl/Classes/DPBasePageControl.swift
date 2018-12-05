@@ -19,13 +19,7 @@ open class DPBasePageControl: UIControl {
         }
     }
     open var currentPage: Int {                     // The selected page
-        get {
-            return Int(round(progress * (Double(numberOfPages) - 1)))
-        }
-        set {
-            let moveToProgress = Double(newValue / numberOfPages)
-            update(for: moveToProgress, animated: true)
-        }
+        return Int(round(progress * (CGFloat(numberOfPages) - 1)))
     }
     open var indicatorColor: UIColor = .lightGray { didSet { updateColors() } }
     open var selectedColor: UIColor = .red { didSet { updateColors() } }
@@ -55,9 +49,9 @@ open class DPBasePageControl: UIControl {
             updatedRadius()
         }
     }
-    open var progress: Double = 0 {
+    open var progress: CGFloat = 0 {
         didSet {
-            update(for: progress, animated: false)
+            update(for: progress)
         }
     }
     
@@ -95,7 +89,7 @@ open class DPBasePageControl: UIControl {
     /// - Parameters:
     ///   - progress: 0...1
     ///   - animated: true for animation, false for immediate change.
-    internal func update(for progress: Double, animated: Bool = false) {
+    internal func update(for progress: CGFloat) {
         fatalError("Should be implemented in child class")
         // let calculateProgress = progress * Double(numberOfPages - 1)
     }
